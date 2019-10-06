@@ -25,6 +25,7 @@ class PostsTableSeeder extends Seeder
             $date->addDays(1);
             $publishedDate = clone($date);
             $createdDate = clone($date);
+            $category_id = rand(1, 5);
 
             $posts[] = [
                 'author_id' => rand(1, 3),
@@ -35,7 +36,8 @@ class PostsTableSeeder extends Seeder
                 'image' => rand(0, 1) == 1 ? $image : NULL,
                 'created_at' => $createdDate,
                 'updated_at' => $createdDate,
-                'published_at' => $i > 5 ? $publishedDate : ( rand(0, 1) == 0 ? NULL : $publishedDate->addDays(4) )
+                'published_at' => $i > 5 ? $publishedDate : ( rand(0, 1) == 0 ? NULL : $publishedDate->addDays(4) ),
+                'category_id' => $category_id
             ];
         }
 
