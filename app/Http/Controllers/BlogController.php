@@ -23,9 +23,7 @@ class BlogController extends Controller
 
     public function show(Post $post)
     {
-        $categories = Category::with(['posts' => function($query) {
-            $query->published();
-        }])->orderBy('title', 'asc')->get();
+        $post->increment('view_count');
 
         return view("blog.show", compact('post'));
     }

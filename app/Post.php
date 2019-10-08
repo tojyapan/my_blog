@@ -8,7 +8,6 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 
 class Post extends Model
 {
-
     protected $dates = ['published_at'];
     
     public function author()
@@ -21,6 +20,10 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function getImageUrlAttribute($value)
     {
