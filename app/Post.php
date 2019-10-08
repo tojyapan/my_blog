@@ -48,6 +48,7 @@ class Post extends Model
     {
         return $this->excerpt ? Markdown::convertToHtml(e($this->excerpt)) : NULL;
     }
+    
 
     public function scopeLatestFirst($query)
     {
@@ -57,5 +58,10 @@ class Post extends Model
     public function scopePublished($query)
     {
         return $query->where("published_at", "<=", Carbon::now());
+    }
+
+    public function scopePopular($query)
+    {
+        return $query->orderBy('view_count', 'desc');
     }
 }
