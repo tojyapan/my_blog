@@ -116,4 +116,15 @@ class Post extends Model
     {
         return $query->orderBy('ount', 'desc');
     }
+
+    public function scopeScheduled($query)
+    {
+        return $query->where("published_at", ">", Carbon::now());
+    }
+
+    public function scopeDraft($query)
+    {
+        return $query->whereNull("published_at");
+    }
+
 }
