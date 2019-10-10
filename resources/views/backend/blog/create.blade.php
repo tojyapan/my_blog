@@ -56,7 +56,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group excerpt">
                                 {!! Form::label('excerpt') !!}
                                 {!! Form::textarea('excerpt', null, ['class' => 'form-control']) !!}
                             </div>
@@ -117,5 +117,20 @@
 @section('script')
     <script type="text/javascript">
       $('ul.pagination').addClass('no-margin pagination-sm');
+
+      $('#title').on('blur', function() {
+        let theTitle = this.value.toLowerCase().trim();
+        let slugInput = $('#slug');
+        let theSlug = theTitle.replace(/&/g, '-and-')
+                              .replace(/[^ぁ-んァ-ン０-９a-zA-Z0-9\-]+/g, '-')
+                              .replace(/\-\-+/g, '-')
+                              .replace(/^-+|-+$/g, '');
+
+        slugInput.val(theTitle);
+      });
+
+      var simplemde1 = new SimpleMDE({ element: $("#excerpt")[0] });
+      var simplemde2 = new SimpleMDE({ element: $("#body")[0] });
+
     </script>
 @endsection
