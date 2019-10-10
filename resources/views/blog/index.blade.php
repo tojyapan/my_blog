@@ -33,7 +33,7 @@
                             @if ($post->image_url)
                                 
                                 <div class="post-item-image">
-                                    <a href="{{ route('blog.show', $post->slug) }}">
+                                    <a href="{{ route('blog.detail', $post->slug) }}">
                                         <img src="{{ $post->image_url }}" alt="">
                                     </a>
                                 </div>
@@ -42,7 +42,7 @@
 
                             <div class="post-item-body">
                                 <div class="padding-10">
-                                    <h2><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h2>
+                                    <h2><a href="{{ route('blog.detail', $post->slug) }}">{{ $post->title }}</a></h2>
                                     {!! $post->excerpt_html !!}
                                 </div>
 
@@ -56,7 +56,7 @@
                                         </ul>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ route('blog.show', $post->slug) }}">Continue Reading &raquo;</a>
+                                        <a href="{{ route('blog.detail', $post->slug) }}">Continue Reading &raquo;</a>
                                     </div>
                                 </div>
                             </div>
