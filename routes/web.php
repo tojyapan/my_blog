@@ -28,3 +28,5 @@ Route::put('/backend/blog/restore/{blog}', 'Backend\BlogController@restore')->na
 Route::delete('/backend/blog/restore/{blog}', 'Backend\BlogController@forceDestroy')->name('blog.force-destroy');
 
 Route::resource('/backend/blog', 'Backend\BlogController');
+
+Route::resource('/backend/categories', 'Backend\CategoriesController');
