@@ -31,4 +31,6 @@ Route::resource('/backend/blog', 'Backend\BlogController');
 
 Route::resource('/backend/categories', 'Backend\CategoriesController');
 
+Route::get('/backend/users/confirm/{users}', 'Backend\UsersController@confirm')->name('users.confirm');
+
 Route::resource('/backend/users', 'Backend\UsersController');

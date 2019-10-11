@@ -12,6 +12,15 @@
         @endif
       </div>
 
+      <div class="hidden form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
+        {!! Form::label('slug') !!}
+        {!! Form::text('slug', null, ['class' => 'form-control']) !!}
+
+        @if ($errors->has('slug'))
+          <span class="help-block">{{ $errors->first('slug') }}</span>
+        @endif
+      </div>
+  
       <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
           {!! Form::label('email') !!}
           {!! Form::text('email', null, ['class' => 'form-control']) !!}
@@ -47,4 +56,20 @@
     </div>
   </div>
 </div>
+
+@section('script')
+    <script type="text/javascript">
+      $('#name').on('blur', function() {
+        let theName = this.value.toLowerCase().trim();
+        let slugInput = $('#slug');
+        let theSlug = theName.replace(/&/g, '-and-')
+                              .replace(/[^ぁ-んァ-ン０-９a-zA-Z0-9\-]+/g, '-')
+                              .replace(/\s/g, '-')
+                              .replace(/\-\-+/g, '-')
+                              .replace(/^-+|-+$/g, '');
+
+        slugInput.val(theSlug);
+      });
+    </script>
+@endsection
 

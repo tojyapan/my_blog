@@ -13,21 +13,19 @@
           
         <tr>
           <td>
-            {!! Form::open(['method' => 'delete', 'route' => ['users.destroy', $user->id]]) !!}
             @csrf
-              <a href="{{ route('users.edit', $user->id) }}" class="btn btn-xs btn-default">
-                <i class="fa fa-edit"></i>
-              </a>
-              @if ($user->id == config('cms.default_user_id'))
-                <button onclick="return false" type="submit" class="btn btn-xs btn-danger disabled">
-                  <i class="fa fa-times"></i>
-                </button>  
-              @else
-                <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-xs btn-danger">
-                  <i class="fa fa-times"></i>
-                </button>  
-              @endif
-            {!! Form::close() !!}
+            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-xs btn-default">
+              <i class="fa fa-edit"></i>
+            </a>
+            @if ($user->id == config('cms.default_user_id'))
+              <button onclick="return false" type="submit" class="btn btn-xs btn-danger disabled">
+                <i class="fa fa-times"></i>
+              </button>  
+            @else
+              <a href="{{ route('users.confirm', $user->id) }}" onclick="return confirm('Are you sure?')" type="submit" class="btn btn-xs btn-danger">
+                <i class="fa fa-times"></i>
+              </a>  
+            @endif
           </td>
           <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>

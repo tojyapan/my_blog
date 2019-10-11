@@ -41,7 +41,10 @@ class UsersController extends BackendController
      */
     public function store(Requests\UserStoreRequest $request)
     {
-        User::create($request->all());
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+
+        User::create($data);
 
         return redirect('/backend/users')->with('message', 'New user was created successfully!');
     }
@@ -93,8 +96,26 @@ class UsersController extends BackendController
     public function destroy(Requests\UserDestroyRequest $request, $id)
     {
         $user = User::findOrFail($id);
+        $deleteOption = $request->delete_option;
+        $selectUser = $request->selected_user;
+
+        if ($deleteOption == "delete") {
+            $user->posts()->forceDelete();
+        } elseif ($deleteOption == "attribute") {
+            $user->posts()->update(['author_id' => $selectUser]);
+        }
+
         $user->delete();
 
         return redirect('/backend/users')->with('message', 'User was deleted successfully!');
     }
+
+    public function confirm(Requests\UserDestroyRequest $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $users = User::where('id', '!=', $user->id)->pluck('name', 'id');
+
+        return view('backend.users.confirm', compact('user', 'users'));
+    }
+
 }
