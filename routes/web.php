@@ -30,3 +30,5 @@ Route::delete('/backend/blog/restore/{blog}', 'Backend\BlogController@forceDestr
 Route::resource('/backend/blog', 'Backend\BlogController');
 
 Route::resource('/backend/categories', 'Backend\CategoriesController');
+
+Route::resource('/backend/users', 'Backend\UsersController');
