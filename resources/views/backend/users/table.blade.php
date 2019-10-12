@@ -4,7 +4,7 @@
         <td width="80">Action</td>
         <td>Name</td>
         <td>Email</td>
-        <td>Role/td>
+        <td>Role</td>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
           </td>
           <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>
-          <td>-</td>
+          <td>{{ $user->roles->first()->display_name }}</td>
         </tr>
 
       @endforeach

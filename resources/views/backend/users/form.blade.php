@@ -48,6 +48,15 @@
           @endif
       </div>
 
+      <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
+          {!! Form::label('role') !!}
+          {!! Form::select('role', App\Role::pluck('display_name', 'id'), $user->exists ? $user->roles->first()->id : null, ['class' => 'form-control', 'placeholder' => 'Choose a role']) !!}
+
+          @if ($errors->has('role'))
+            <span class="help-block">{{ $errors->first('role') }}</span>
+          @endif
+      </div>
+
     </div>
 
     <div class="box-footer">

@@ -114,7 +114,7 @@ class Post extends Model
 
     public function scopePopular($query)
     {
-        return $query->orderBy('ount', 'desc');
+        return $query->orderBy('view_count', 'desc');
     }
 
     public function scopeScheduled($query)
