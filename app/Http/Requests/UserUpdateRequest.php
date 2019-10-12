@@ -23,11 +23,18 @@ class UserUpdateRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
             'name' => 'required',
-            'email' => 'email|required|unique:users,email,' . $this->route('users'),
+            'email' => 'email|required|unique:users,email,' . $this->route("users"),
+            // 'email' => [ 
+            //     'email',
+            //     'required',
+       	    //     \Illuminate\Validation\Rule::unique('users')->ignore($this->user()->id),
+            // ],
             'password' => 'required_with:password_confirmation|confirmed',
-            'role' => 'required'
+            'role' => 'required',
+            'slug' => 'required|unique:users,slug,' . $this->route("users")
         ];
     }
 }
