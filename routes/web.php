@@ -23,6 +23,10 @@ Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');
 
+Route::get('/edit-account', 'Backend\HomeController@edit');
+
+Route::post('/edit-account', 'Backend\HomeController@update');
+
 Route::put('/backend/blog/restore/{blog}', 'Backend\BlogController@restore')->name('blog.restore');
 
 Route::delete('/backend/blog/restore/{blog}', 'Backend\BlogController@forceDestroy')->name('blog.force-destroy');

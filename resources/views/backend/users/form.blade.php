@@ -49,9 +49,11 @@
       </div>
 
       <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
-        {!! Form::label('role') !!}
-        {!! Form::select('role', App\Role::pluck('display_name', 'id'), $user->exists ? $user->roles->first()->id : null, ['class' => 'form-control', 'placeholder' => 'Choose a role']) !!}
-
+        @if (! isset($hideRoleDropdown))
+          {!! Form::label('role') !!}
+          {!! Form::select('role', App\Role::pluck('display_name', 'id'), $user->exists ? $user->roles->first()->id : null, ['class' => 'form-control', 'placeholder' => 'Choose a role']) !!}  
+        @endif
+        
         @if ($errors->has('role'))
           <span class="help-block">{{ $errors->first('role') }}</span>
         @endif
