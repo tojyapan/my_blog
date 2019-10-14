@@ -54,4 +54,9 @@ class BlogController extends Controller
         return view('blog.index', compact('posts', 'authorName'));
 
     }
+
+    public function about()
+    {
+        return view('blog.about');
+    }
 }

@@ -17,6 +17,8 @@ Route::get('/blog/{post}', 'BlogController@show')->name('blog.detail');
 
 Route::get('category/{category}', 'BlogController@category')->name('category');
 
+Route::get('/about', 'BlogController@about')->name('about');
+
 Route::get('/author/{author}', 'BlogController@author')->name('author');
 
 Auth::routes();
