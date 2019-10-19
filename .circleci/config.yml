@@ -48,7 +48,7 @@ jobs:
             sudo pip install awsebcli --upgrade
       - run:
           name: eb deploy
-          command: eb deploy myblog_app
+          command: eb deploy myblog-app
 
 workflows:
   version: 2
