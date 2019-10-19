@@ -19,20 +19,20 @@ jobs:
     steps:
       - checkout
       - run:
-        name: install pdo_mysql
-        command: |
-          sudo apt update
-          sudo docker-php-ext-install pdo_mysql
-          sudo docker-php-ext-enable pdo_mysql
+          name: install pdo_mysql
+          command: |
+            sudo apt update
+            sudo docker-php-ext-install pdo_mysql
+            sudo docker-php-ext-enable pdo_mysql
       - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
-          - v1-dependencies-
+          keys:
+            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-
       - run: composer install -n --prefer-dist
       - save_cache:
-        paths:
-          - ./vendor
-        key: v1-dependencies-{{ checksum "composer.json" }}
+          paths:
+            - ./vendor
+          key: v1-dependencies-{{ checksum "composer.json" }}
       - run: php artisan migrate
       - run: php artisan db:seed
   
@@ -41,14 +41,14 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Install awsebcli
-        command: |
-          sudo apt-get -y -qq update
-          sudo apt-get install python-pip python-dev build-essential
-          sudo pip install awsebcli --upgrade
+          name: Install awsebcli
+          command: |
+            sudo apt-get -y -qq update
+            sudo apt-get install python-pip python-dev build-essential
+            sudo pip install awsebcli --upgrade
       - run:
-        name: eb deploy
-        command: eb deploy myblog_app
+          name: eb deploy
+          command: eb deploy myblog_app
 
 workflows:
   version: 2
