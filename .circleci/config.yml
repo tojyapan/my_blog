@@ -9,7 +9,7 @@ defaults: &defaults
     - APP_DEBUG: true
     - APP_ENV: local
     - APP_KEY: base64:vIt03hyeRXhUph99vhkTa91hxArUtdIGhNGRnR9uBzQ=
-    - DB_DATABASE: default
+    - DB_DATABASE: my_blog
     - DB_USERNAME: root
     - MYSQL_ALLOW_EMPTY_PASSWORD: true
 
